@@ -4,8 +4,19 @@ const socket = socketio('http://192.168.0.106:3333', {
   autoConnect: false
 });
 
-function connect() {
+function connect(latitude, longitude, techs) {
+  // enviando para o backend
+  socket.io.opts.query = {
+    latitude,
+    longitude,
+    techs
+  };
+
   socket.connect();
+
+  socket.on('message', text => {
+    console.log(text);
+  });
 }
 
 function disconnect() {
