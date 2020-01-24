@@ -61,6 +61,7 @@ function Main({ navigation }) {
     });
 
     setDevs(response.data.devs);
+    setupWebsocket();
   }
 
   function handleRegionChanged(region) {
